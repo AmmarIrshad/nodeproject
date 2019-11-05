@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Currency Calculator</title>
+
+<script >
+     
+ 
+        function calculateResult(){
+    
+    var enteredAmount = document.getElementById("euroAmount").value; 
+    var currencyRate = document.getElementById("currencySelect").value;
+    
+    var result = document.getElementById('result');
+       return result.value= enteredAmount * currencyRate;
+     //or print or display in DOM or whatever you want to do with the result
+}
+             
+        
+        function rest(){
+           document.getElementById("my-form").reset();
+            
+            }
+    
+    
+    
+</script>
+
+</head>
+<body >
+    <h1>Currency calculator (WS2019)</h1>
+       
+    <form id="my-form" >
+        <div>
+        <label>Euro Amount:</label>
+          
+    <input type="text"  id="euroAmount">
+        </div>
+    <br>
+    <br>
+     
+    <div>
+      <label>Currency:</label>   
+    <select id="currencySelect">
+    <option value="1.11" >Dollar</option>
+    <option value="0.86">Pound</option>
+    <option value="170">pkr</option>
+  
+</select>
+    </div>
+     
+     <br>
+     <br>
+     <div>
+           
+    <button type="button" id="calculate">Calculate</button>
+  
+    <button type="button" onclick="rest();">Rest</button>
+     </div>
+    <br>
+    <br>
+    
+    <output type="text" id="result"></output>
+    </form>
+    
+    
+</body>
+</html>
+
+<script>
+    document.getElementById('calculate').addEventListener('click', fetchUserData);
+
+    function fetchUserData(){
+        var enteredAmount = document.getElementById("euroAmount").value; 
+        var currencyRate = document.getElementById("currencySelect").value;
+    
+        val=enteredAmount * currencyRate
+        const postdata = {
+        currency: currencyRate,
+        amount: val,
+        name:"daivd"
+    };
+
+    fetch('http://localhost:8000/api/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postdata)
+    })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+    }
+</script>
