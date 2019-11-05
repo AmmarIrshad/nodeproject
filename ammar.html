@@ -74,12 +74,13 @@
     function fetchUserData(){
         var enteredAmount = document.getElementById("euroAmount").value; 
         var currencyRate = document.getElementById("currencySelect").value;
+
     
         val=enteredAmount * currencyRate
         const postdata = {
         currency: currencyRate,
         amount: val,
-        name:"daivd"
+        name:"daivid"
     };
 
     fetch('http://localhost:8000/api/', {
